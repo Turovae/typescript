@@ -11,8 +11,8 @@ export default class Cart {
         return [...this._items]; 
     }
 
-    totalCost(): number {
+    totalCost(discount?: number): number {
         const cost = this._items.reduce((acc, item) => item.price + acc, 0);
-        return cost;
+        return discount ? (1 - discount / 100) * cost : cost;
     }
 }

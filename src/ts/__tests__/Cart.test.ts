@@ -44,11 +44,12 @@ test('add movie to cart', () => {
   expect(cart.items.length).toBe(1);
 });
 
-test('get total cost without discount', () => {
+test('get total cost', () => {
   const cart = new Cart();
   cart.add(devOnJS);
   cart.add(movieAvengers);
 
   expect(cart.items.length).toBe(2);
   expect(cart.totalCost()).toBe(1300);
+  expect(cart.totalCost(10)).toBe(1170);
 });
