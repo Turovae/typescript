@@ -9,7 +9,7 @@ test('new card should be empty', () => {
 });
 
 const devOnJS = new Book(
-  Math.round(Math.random() * 10000),
+  23,
   'Разработка на JavaScript',
   'Адам Д. Скотт',
   1000,
@@ -53,3 +53,17 @@ test('get total cost', () => {
   expect(cart.totalCost()).toBe(1300);
   expect(cart.totalCost(10)).toBe(1170);
 });
+
+test('delete items from Cart', () => {
+  const cart = new Cart();
+  cart.add(devOnJS);
+  expect(cart.items.length).toBe(1);
+  cart.add(movieAvengers);
+  expect(cart.items.length).toBe(2);
+  cart.delete(23);
+  expect(cart.items.length).toBe(1);
+  cart.delete(23);
+  expect(cart.items.length).toBe(1);
+  cart.delete(2012112);
+  expect(cart.items.length).toBe(0);
+})
