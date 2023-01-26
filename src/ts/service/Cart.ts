@@ -4,11 +4,15 @@ export default class Cart {
     private _items: Buyable[] = [];
 
     add(item: Buyable): void {
+        const sameItem = this._items.find((elem) => elem.id === item.id);
+        if (sameItem && !sameItem.model) {
+            return;
+        }
         this._items.push(item);
     }
 
     get items(): Buyable[] {
-        return [...this._items]; 
+        return [...this._items];
     }
 
     totalCost(discount?: number): number {
